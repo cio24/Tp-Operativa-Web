@@ -1,0 +1,19 @@
+.input{
+    height: 50px;
+    width: 50px;
+}
+
+table{
+	float:left;
+  padding:10px;
+}
+  
+.buttons{
+	margin:0px;
+  padding:15px;
+}
+  
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
