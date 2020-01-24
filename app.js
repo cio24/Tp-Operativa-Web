@@ -147,13 +147,27 @@ function loadMatrix(){
     console.log(matrix);
     console.log(pop);
     g=new Graph(matrix.length);
-    for(let i=0;i<g.getNumberOfVertex();i++)
-        for(let j=0;j<g.getNumberOfVertex();j++)
+    p=new Graph(matrix.length);
+    let popA = new Array(matrix.length);
+    for(let i=0;i<g.getNumberOfVertex();i++){
+        pop[i]=1000;
+        for(let j=0;j<g.getNumberOfVertex();j++){
+            p.addEdge(i,j,0.1);
             if(typeof(matrix[i][j]) != 'undefined')
                 g.addEdge(i,j,matrix[i][j]);
             else
-                console.log("Se quiso agregar en ("+i+","+j+") un undefined")
+                console.log("Se quiso agregar en ("+i+","+j+") un undefined");
+        }
+    }
     console.log(g);
+    Ant.setAlpha(1.0);
+    Ant.setBeta(1.0);
+    Ant.setGraph(g);
+    Ant.setPheromones(p);
+    Ant.setPopulation(popA);
+    a = new Ant(0,3);
+    a.findRoute();
+    console.log(a);
 }
 
 function writeMatrix(i,j,input){
