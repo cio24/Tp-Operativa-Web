@@ -31,8 +31,7 @@ class Graph {
     }
 
     public getAdjacent(vertex:number):number[]{
-        let copy = Object.assign([], this.matrix[vertex]);
-        return copy;
+        return [...this.matrix[vertex]];
     }
 
     public getNumberOfVertex():number{
