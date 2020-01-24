@@ -18,7 +18,8 @@ var Graph = /** @class */ (function () {
         this.matrix[source][destination] = value;
     };
     Graph.prototype.getAdjacent = function (vertex) {
-        return this.matrix[vertex];
+        var copy = Object.assign([], this.matrix[vertex]);
+        return copy;
     };
     Graph.prototype.getNumberOfVertex = function () {
         return this.numberOfVertex;
