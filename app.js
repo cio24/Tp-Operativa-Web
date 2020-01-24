@@ -1,5 +1,7 @@
 "uses strict";
 
+var g;
+
 let table = document.getElementById('adjacency-matrix'); // table reference
 let population = document.getElementById('population-array');
 
@@ -144,7 +146,14 @@ function delDimension(){
 function loadMatrix(){
     console.log(matrix);
     console.log(pop);
-  
+    g=new Graph(matrix.length);
+    for(let i=0;i<g.getNumberOfVertex();i++)
+        for(let j=0;j<g.getNumberOfVertex();j++)
+            if(typeof(matrix[i][j]) != 'undefined')
+                g.addEdge(i,j,matrix[i][j]);
+            else
+                console.log("Se quiso agregar en ("+i+","+j+") un undefined")
+    console.log(g);
 }
 
 function writeMatrix(i,j,input){

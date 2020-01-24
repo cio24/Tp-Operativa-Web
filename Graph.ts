@@ -15,7 +15,7 @@ class Graph {
         this.numberOfVertex=numberOfVertex;
         this.matrix=new Array<number[]>(numberOfVertex);
         for(let i=0;i<numberOfVertex;i++)
-            this.matrix[i]=new Array<number>();
+            this.matrix[i]=new Array<number>(numberOfVertex);
     }
 
     public getCost(source:number, destination:number):number{
