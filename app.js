@@ -161,7 +161,7 @@ function loadMatrix(){
         }
     }
     console.log(g);
-    let solver = new TSPSolver(g,p,popA,1.0,1.0,0.6,10,5,0,6);
+    let solver = new TSPSolver(g,p,popA,1.0,1.0,0.6,100,10000,0,6);
     let solution = solver.solve();
     console.log(solution);
 }

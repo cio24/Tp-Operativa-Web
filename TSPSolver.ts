@@ -41,9 +41,11 @@ class TSPSolver {
         let bestPath:number[] = undefined;
         let bestPathCost:number = undefined;
         for(let i=0;i<this.numberOfIterations;i++){
-            console.log("Iteration number: " + i+1);
+            console.log("Iteration number: " + (i+1).toString());
             for(let ant of this.ants){
                 ant.findRoute();
+                if(ant.foundPath())
+                    console.log(ant.getPath());
                 if(ant.foundPath() && ( typeof(bestPath) == 'undefined' || ant.getPathCost() > bestPathCost)){
                     bestPath=ant.getPath();
                     bestPathCost=ant.getPathCost();

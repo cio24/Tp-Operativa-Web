@@ -23,10 +23,12 @@ var TSPSolver = /** @class */ (function () {
         var bestPath = undefined;
         var bestPathCost = undefined;
         for (var i = 0; i < this.numberOfIterations; i++) {
-            console.log("Iteration number: " + i + 1);
+            console.log("Iteration number: " + (i + 1).toString());
             for (var _i = 0, _a = this.ants; _i < _a.length; _i++) {
                 var ant = _a[_i];
                 ant.findRoute();
+                if (ant.foundPath())
+                    console.log(ant.getPath());
                 if (ant.foundPath() && (typeof (bestPath) == 'undefined' || ant.getPathCost() > bestPathCost)) {
                     bestPath = ant.getPath();
                     bestPathCost = ant.getPathCost();

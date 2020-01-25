@@ -11,7 +11,7 @@ var Ant = /** @class */ (function () {
         this.pathLength = pathLength;
     }
     Ant.prototype.findRoutePrivate = function (index, visited) {
-        if (index == this.pathLength) {
+        if (index == this.pathLength - 1) {
             var res = Ant.graph.connected(this.path[index], this.initialVertex);
             if (!res) {
                 this.pathCost = 0.0;
@@ -43,13 +43,18 @@ var Ant = /** @class */ (function () {
             this.path = [];
             return false;
         }
+        //console.log(probabilities);
         for (var _i = 0, probabilities_1 = probabilities; _i < probabilities_1.length; _i++) {
             var entry = probabilities_1[_i];
-            entry[1] / denominator;
+            entry[1] = +entry[1] / +denominator;
         }
+        //console.log(denominator);
+        //console.log(probabilities);
         var next = this.roulette(probabilities);
         this.path[index + 1] = next;
         visited.add(next);
+        //console.log(this.path);
+        //console.log(this);
         //console.log("Antes de sumar pathCost: " + this.pathCost)
         this.pathCost += +Ant.graph.getCost(this.path[index], next) * 1.0;
         //console.log("Despues de sumar pathCost: " + this.pathCost)
@@ -58,14 +63,17 @@ var Ant = /** @class */ (function () {
     };
     Ant.prototype.roulette = function (probs) {
         var cumulative = new Array();
+        //console.log("Dentro de roulette");
         for (var i_1 = 0; i_1 < probs.length; i_1++) {
             var sum = 0.0;
             for (var j_1 = i_1 + 1; j_1 < probs.length; j_1++) {
                 sum += +probs[j_1][1];
             }
-            cumulative.push(probs[i_1]);
+            cumulative.push([probs[i_1][0], sum]);
         }
+        //console.log(cumulative);
         var random = Math.random();
+        //console.log(random);
         var i = 0;
         var j = 1;
         while (j < cumulative.length) {
@@ -111,7 +119,7 @@ var Ant = /** @class */ (function () {
     };
     Ant.prototype.depositPheromones = function () {
         if (this.foundPath()) {
-            var pheromoneStrength = (+100 * +this.totalPopulation) / (+this.pathCost);
+            var pheromoneStrength = (+this.totalPopulation) / (+this.pathCost);
             for (var i = 0; i < this.pathLength - 1; i++)
                 Ant.pheromones.addEdge(this.path[i], this.path[i + 1], Ant.pheromones.getCost(this.path[i], this.path[i + 1]) + pheromoneStrength);
             // deposite pheromones on the edge from the last city to th first city
