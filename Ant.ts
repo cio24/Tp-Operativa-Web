@@ -20,9 +20,7 @@ class Ant {
     private totalPopulation:number;
     private path:number[];
     
-    //
-    //  Methods 
-    //
+    
 
     constructor(initialVertex : number, pathLength : number){
         this.initialVertex=initialVertex;
@@ -38,8 +36,8 @@ class Ant {
                 this.totalPopulation=0;
                 this.path = [];
             } else {
-                this.pathCost += Ant.graph.getCost(this.path[index],this.initialVertex);
-                this.totalPopulation += Ant.population[this.initialVertex];
+                this.pathCost += +Ant.graph.getCost(this.path[index],this.initialVertex);
+                this.totalPopulation += +Ant.population[this.initialVertex];
             }
             return res;
         }
@@ -73,19 +71,21 @@ class Ant {
         let next = this.roulette(probabilities);
         this.path[index+1]=next;
         visited.add(next);
-        this.pathCost += Ant.graph.getCost(this.path[index],next);
-        this.totalPopulation += Ant.population[next];
+        //console.log("Antes de sumar pathCost: " + this.pathCost)
+        this.pathCost += +Ant.graph.getCost(this.path[index],next)*1.0;
+        //console.log("Despues de sumar pathCost: " + this.pathCost)
+        this.totalPopulation += +Ant.population[next];
         return this.findRoutePrivate(index+1,visited);
     }
 
     private roulette(probs:[number,number][]):number{
-        let cumulative:[number,number][];
+        let cumulative:[number,number][] = new Array();
         
         
         for(let i=0;i<probs.length;i++){
             let sum=0.0;
             for(let j=i+1;j<probs.length;j++){
-                sum += probs[j][1];
+                sum += +probs[j][1];
             }
             cumulative.push(probs[i]);
         }
@@ -124,7 +124,7 @@ class Ant {
     }
 
     public getPathCost():number{
-        return this.totalPopulation / this.pathCost;
+        return +this.totalPopulation / +this.pathCost;
     }
 
     public getPath():number[]{
@@ -136,12 +136,20 @@ class Ant {
     }
 
     public findRoute(){
-        console.log("xD");
+        let visited=new Set<number>();
+        this.path=[];
+        this.pathCost=0.0;
+        this.totalPopulation=0;
+        
+        this.path[0]=this.initialVertex;
+        visited.add(this.initialVertex);
+
+        this.findRoutePrivate(0,visited)
     }
 
     public depositPheromones(){
         if(this.foundPath()){
-            let pheromoneStrength = (100*this.totalPopulation)/(this.pathCost);
+            let pheromoneStrength = (+100*+this.totalPopulation)/(+this.pathCost);
             for(let i=0;i<this.pathLength-1;i++)
                 Ant.pheromones.addEdge(this.path[i],this.path[i+1],Ant.pheromones.getCost(this.path[i],this.path[i+1])+pheromoneStrength)
             // deposite pheromones on the edge from the last city to th first city

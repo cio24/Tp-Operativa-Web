@@ -121,7 +121,7 @@ function addDimension(){
         matrix.push(new Array());
         del.disabled = false;
     }
-    if(table.rows.length >= 10){
+    if(table.rows.length >= 20){
         add.disabled = true;
     }
 
@@ -146,28 +146,24 @@ function delDimension(){
 function loadMatrix(){
     console.log(matrix);
     console.log(pop);
-    g=new Graph(matrix.length);
-    p=new Graph(matrix.length);
-    let popA = new Array(matrix.length);
+    g=new Graph(20);
+    p=new Graph(20);
+    let matrixa=[ [ undefined,49.0,185.0,undefined,undefined,95.7,undefined,undefined,undefined,undefined,undefined,88.6,53.8,undefined,66.7,undefined,167.0,66.5,undefined,undefined ],[ 49.0,undefined,undefined,undefined,undefined,49,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,37.0,undefined,undefined ],[ 185.0,undefined,undefined,47.5,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,47.5,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,56.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,75.4,undefined,undefined,62.1,undefined,undefined,undefined,40.4,undefined ],[ 95.7,49.0,undefined,undefined,undefined,undefined,undefined,undefined,undefined,42.1,undefined,undefined,undefined,undefined,undefined,65.9,undefined,72.9,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,29.7,46.9,undefined,72.7,83.9,84.1,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,88.6,38.3,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,51.1,85.3,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,42.1,undefined,88.6,undefined,undefined,undefined,undefined,undefined,undefined,undefined,79.2,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,38.3,undefined,undefined,undefined,62.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 88.6,undefined,undefined,56.1,75.4,undefined,undefined,undefined,undefined,undefined,62.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 53.8,undefined,undefined,undefined,undefined,undefined,29.7,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,72.7,undefined,84,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,46.9,undefined,51.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 66.7,undefined,undefined,undefined,62.1,undefined,undefined,undefined,85.3,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,52.5 ],[ undefined,undefined,undefined,undefined,undefined,65.9,72.7,undefined,undefined,79.2,undefined,undefined,72.7,undefined,undefined,undefined,undefined,39.5,undefined,undefined ],[ 167.0,undefined,undefined,undefined,undefined,undefined,83.9,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 66.5,37,undefined,undefined,undefined,72.9,84.1,undefined,undefined,undefined,undefined,undefined,84,undefined,undefined,39.5,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,40.4,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,30.2 ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,52.5,undefined,undefined,undefined,30.2,undefined ]];
+    let popA = [33442 ,4777 ,36494 ,15760 ,5178 ,4450 ,3995 ,12122 ,57669 ,2845 ,8645 ,31533 ,5115 ,3714 ,11685 ,7617 ,124101 ,8061 ,3201 ,21874];
+    console.log(matrix);
     for(let i=0;i<g.getNumberOfVertex();i++){
-        pop[i]=1000;
         for(let j=0;j<g.getNumberOfVertex();j++){
             p.addEdge(i,j,0.1);
-            if(typeof(matrix[i][j]) != 'undefined')
-                g.addEdge(i,j,matrix[i][j]);
+            if(typeof(matrixa[i][j]) != 'undefined')
+                g.addEdge(i,j,matrixa[i][j]);
             else
                 console.log("Se quiso agregar en ("+i+","+j+") un undefined");
         }
     }
     console.log(g);
-    Ant.setAlpha(1.0);
-    Ant.setBeta(1.0);
-    Ant.setGraph(g);
-    Ant.setPheromones(p);
-    Ant.setPopulation(popA);
-    a = new Ant(0,3);
-    a.findRoute();
-    console.log(a);
+    let solver = new TSPSolver(g,p,popA,1.0,1.0,0.6,10,5,0,6);
+    let solution = solver.solve();
+    console.log(solution);
 }
 
 function writeMatrix(i,j,input){

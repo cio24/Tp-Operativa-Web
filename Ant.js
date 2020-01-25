@@ -6,9 +6,6 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
     return r;
 };
 var Ant = /** @class */ (function () {
-    //
-    //  Methods 
-    //
     function Ant(initialVertex, pathLength) {
         this.initialVertex = initialVertex;
         this.pathLength = pathLength;
@@ -22,8 +19,8 @@ var Ant = /** @class */ (function () {
                 this.path = [];
             }
             else {
-                this.pathCost += Ant.graph.getCost(this.path[index], this.initialVertex);
-                this.totalPopulation += Ant.population[this.initialVertex];
+                this.pathCost += +Ant.graph.getCost(this.path[index], this.initialVertex);
+                this.totalPopulation += +Ant.population[this.initialVertex];
             }
             return res;
         }
@@ -53,16 +50,18 @@ var Ant = /** @class */ (function () {
         var next = this.roulette(probabilities);
         this.path[index + 1] = next;
         visited.add(next);
-        this.pathCost += Ant.graph.getCost(this.path[index], next);
-        this.totalPopulation += Ant.population[next];
+        //console.log("Antes de sumar pathCost: " + this.pathCost)
+        this.pathCost += +Ant.graph.getCost(this.path[index], next) * 1.0;
+        //console.log("Despues de sumar pathCost: " + this.pathCost)
+        this.totalPopulation += +Ant.population[next];
         return this.findRoutePrivate(index + 1, visited);
     };
     Ant.prototype.roulette = function (probs) {
-        var cumulative;
+        var cumulative = new Array();
         for (var i_1 = 0; i_1 < probs.length; i_1++) {
             var sum = 0.0;
             for (var j_1 = i_1 + 1; j_1 < probs.length; j_1++) {
-                sum += probs[j_1][1];
+                sum += +probs[j_1][1];
             }
             cumulative.push(probs[i_1]);
         }
@@ -93,7 +92,7 @@ var Ant = /** @class */ (function () {
         this.beta = beta;
     };
     Ant.prototype.getPathCost = function () {
-        return this.totalPopulation / this.pathCost;
+        return +this.totalPopulation / +this.pathCost;
     };
     Ant.prototype.getPath = function () {
         return __spreadArrays(this.path);
@@ -102,11 +101,17 @@ var Ant = /** @class */ (function () {
         return this.path.length != 0;
     };
     Ant.prototype.findRoute = function () {
-        console.log("xD");
+        var visited = new Set();
+        this.path = [];
+        this.pathCost = 0.0;
+        this.totalPopulation = 0;
+        this.path[0] = this.initialVertex;
+        visited.add(this.initialVertex);
+        this.findRoutePrivate(0, visited);
     };
     Ant.prototype.depositPheromones = function () {
         if (this.foundPath()) {
-            var pheromoneStrength = (100 * this.totalPopulation) / (this.pathCost);
+            var pheromoneStrength = (+100 * +this.totalPopulation) / (+this.pathCost);
             for (var i = 0; i < this.pathLength - 1; i++)
                 Ant.pheromones.addEdge(this.path[i], this.path[i + 1], Ant.pheromones.getCost(this.path[i], this.path[i + 1]) + pheromoneStrength);
             // deposite pheromones on the edge from the last city to th first city
