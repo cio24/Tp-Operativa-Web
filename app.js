@@ -55,6 +55,7 @@
     
     loadExample();
     
+ 
     
 
     function showArrayAndMatrix(){
@@ -137,3 +138,6 @@
     function getCityPopulation(i){
         return arrayCitiesNameView.rows.item(1).cells.item(i).children[0].value;
     }
+
+
+    
