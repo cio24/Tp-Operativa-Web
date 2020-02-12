@@ -143,19 +143,26 @@
 
                 </form>
 
-                <div>
-                      <div class="card text-white bg-secondary mb-3 float-left mg-r-10" style="max-width: 18rem;">
+                <div id="graph-container" class="show-hide border border-primary rounded float-left">
+                </div>
+
+                <div id="results" class="float-left">
+                      <div class="card d-block text-white bg-secondary mb-3 mg-r-10" style="max-width: 18rem;">
                         <div class="card-header">Resultados</div>
                         <div class="card-body">
-                          <h5 class="card-title">Secondary card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <h5 class="card-title">Iteracion #</h5>
+                          <p class="card-text">Hormiga: 1 <br> Camino: 1-2-3-4-5-6-1 <br> Costo: 345.3 <br><br>
+                            Hormiga: 2 <br> Camino: 1-2-3-4-8-6-1 <br> Costo: 345.9<br><br>
+                            Hormiga: 3 <br> Camino: 4-5-3-7-9-1-4 <br> Costo: 345.2<br><br>
+                            Hormiga: 4 <br> Camino: 1-2-3-4-5-6-1 <br> Costo: 145.5<br><br>
+                            Hormiga: 5 <br> Camino: 1-2-3-4-5-6-1 <br> Costo: 245.3</p>
                         </div>
                       </div>
-                      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                      <div class="card d-block text-white bg-success mb-3" style="max-width: 18rem;">
                         <div class="card-header">Camino de menor costo</div>
                         <div class="card-body">
-                          <h5 class="card-title">Success card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <h5 class="card-title">Costo: 145.5 <br> Camino: 1-2-3-4-5-6-1</h5>
+                          <p class="card-text"> Hormiga: 4 </p>
                         </div>
                       </div>
 
@@ -163,8 +170,7 @@
                       </div>
                 </div>
 
-                <div id="graph-container" class="show-hide border border-primary rounded">
-                </div>
+
 
             </div>
 

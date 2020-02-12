@@ -12,7 +12,14 @@
     margin: 0 auto;
 
     min-height: 900px;
-    min-width: 1200px;
+    min-width: 80%;
+    display:inline-block;
+}
+
+
+#results{
+    mid-width:20%;
+    margin-left:10px;
 }
 
 /*
