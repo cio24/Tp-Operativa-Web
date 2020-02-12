@@ -78,12 +78,11 @@
 
         //shows the array and the matrix
         appendRowCitiesName();
-        //appendRowPopulation();
-        //let title = document.createElement("td");
-        //title.setAttribute("colspan","20");
-        //title.innerHTML = "Distances between cities";
         let row = matrixView.insertRow(matrixView.rows.length);
-        row.insertCell(0).setAttribute("colspan","20");
+        let r = row.insertCell(0);
+        r.setAttribute("colspan","20");
+        r.style.fontWeight = "900";
+        r.style.fontSize = "20px";
         matrixView.rows.item(0).cells.item(0).innerHTML = "Distances between cities";
         for(let i = 0; i <inputCities.value; i++){
             appendRowDistances();
@@ -98,8 +97,14 @@
         let rowPop = arrayCitiesNameView.insertRow(arrayCitiesNameView.rows.length);
         */
        let row = arrayCitiesNameView.insertRow(arrayCitiesNameView.rows.length);
-       row.insertCell(0).appendChild(createInput("text","City Name"));
-       row.insertCell(1).appendChild(createInput("text","Population"));
+       let r1 = row.insertCell(0);
+       r1.innerHTML = "City Name";
+       r1.style.fontSize = "20px";
+       let r2= row.insertCell(1);
+       r2.innerHTML = "Population";
+       r1.style.fontSize = "20px";
+       r1.style.fontWeight = "900";
+       r2.style.fontWeight = "900";
         for (let i = 0; i < inputCities.value; i++){
             let row = arrayCitiesNameView.insertRow(arrayCitiesNameView.rows.length);
             row.insertCell(0).appendChild(createInput("text","City #" + i));

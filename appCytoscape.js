@@ -46,15 +46,15 @@
     
         let maxWidth=10;
         let maxValue=getMax(matrixa);
-        console.log({maxValue,maxWidth})
+        //console.log({maxValue,maxWidth})
     
         for(let i=0;i<matrixa.length;i++){
             for(let j=0;j<matrixa.length;j++){
-                console.log('e'+(i*matrixa.length+j));
+                //console.log('e'+(i*matrixa.length+j));
                 if(i == j || typeof(matrixa[i][j])=='undefined')
                     continue;
                 let a = maxWidth*matrixa[i][j]/maxValue;
-                console.log(a);
+                //console.log(a);
                 cy.add({ group: 'edges', data: { id: 'e'+(i*matrixa.length+j), source: 'n'+i, target: 'n'+j,weight:matrixa[i][j],width:maxWidth*matrixa[i][j]/maxValue} });
             }
         }
@@ -73,7 +73,7 @@
         }
         //poniendo cada valor en su posicion correspondiente
         let h = r * 0x10000 + g * 0x100 + b * 0x1;
-        console.log('#' + ('000000' + h.toString(16)).slice(-6));
+        //console.log('#' + ('000000' + h.toString(16)).slice(-6));
         return '#' + ('000000' + h.toString(16)).slice(-6);
     }
     
