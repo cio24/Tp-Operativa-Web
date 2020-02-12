@@ -1,5 +1,10 @@
 "use strict";
 
+    let matrixa=[ [ undefined,49.0,185.0,undefined,undefined,95.7,undefined,undefined,undefined,undefined,undefined,88.6,53.8,undefined,66.7,undefined,167.0,66.5,undefined,undefined ],[ 49.0,undefined,undefined,undefined,undefined,49,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,37.0,undefined,undefined ],[ 185.0,undefined,undefined,47.5,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,47.5,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,56.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,75.4,undefined,undefined,62.1,undefined,undefined,undefined,40.4,undefined ],[ 95.7,49.0,undefined,undefined,undefined,undefined,undefined,undefined,undefined,42.1,undefined,undefined,undefined,undefined,undefined,65.9,undefined,72.9,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,29.7,46.9,undefined,72.7,83.9,84.1,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,88.6,38.3,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,51.1,85.3,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,42.1,undefined,88.6,undefined,undefined,undefined,undefined,undefined,undefined,undefined,79.2,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,38.3,undefined,undefined,undefined,62.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 88.6,undefined,undefined,56.1,75.4,undefined,undefined,undefined,undefined,undefined,62.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 53.8,undefined,undefined,undefined,undefined,undefined,29.7,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,72.7,undefined,84,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,46.9,undefined,51.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 66.7,undefined,undefined,undefined,62.1,undefined,undefined,undefined,85.3,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,52.5 ],[ undefined,undefined,undefined,undefined,undefined,65.9,72.7,undefined,undefined,79.2,undefined,undefined,72.7,undefined,undefined,undefined,undefined,39.5,undefined,undefined ],[ 167.0,undefined,undefined,undefined,undefined,undefined,83.9,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 66.5,37,undefined,undefined,undefined,72.9,84.1,undefined,undefined,undefined,undefined,undefined,84,undefined,undefined,39.5,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,40.4,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,30.2 ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,52.5,undefined,undefined,undefined,30.2,undefined ]];
+    let popA = [33442 ,4777 ,36494 ,15760 ,5178 ,4450 ,3995 ,12122 ,57669 ,2845 ,8645 ,31533 ,5115 ,3714 ,11685 ,7617 ,124101 ,8061 ,3201 ,21874];
+    let names = ["Trenque Lauquen","30 de agosto","9 de Julio","Carlos Casares","Carlos Tejedor","Casbas","Catrilo","Daireaux","General pico","Guamini","Henderson","Pehuajo","Pellegrini","Quemu Quemu","Rivadavia","Saliquelo","Santa Rosa","Tres lomas","Tres algarrobo","Villegas"]
+
+
 
     //getting all inputs elements
     const inputCities = document.querySelector("#cities");
@@ -48,10 +53,7 @@
     
     
 
-    let matrixa=[ [ undefined,49.0,185.0,undefined,undefined,95.7,undefined,undefined,undefined,undefined,undefined,88.6,53.8,undefined,66.7,undefined,167.0,66.5,undefined,undefined ],[ 49.0,undefined,undefined,undefined,undefined,49,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,37.0,undefined,undefined ],[ 185.0,undefined,undefined,47.5,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,47.5,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,56.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,75.4,undefined,undefined,62.1,undefined,undefined,undefined,40.4,undefined ],[ 95.7,49.0,undefined,undefined,undefined,undefined,undefined,undefined,undefined,42.1,undefined,undefined,undefined,undefined,undefined,65.9,undefined,72.9,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,29.7,46.9,undefined,72.7,83.9,84.1,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,88.6,38.3,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,51.1,85.3,undefined,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,42.1,undefined,88.6,undefined,undefined,undefined,undefined,undefined,undefined,undefined,79.2,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,38.3,undefined,undefined,undefined,62.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 88.6,undefined,undefined,56.1,75.4,undefined,undefined,undefined,undefined,undefined,62.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 53.8,undefined,undefined,undefined,undefined,undefined,29.7,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,72.7,undefined,84,undefined,undefined ],[ undefined,undefined,undefined,undefined,undefined,undefined,46.9,undefined,51.1,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 66.7,undefined,undefined,undefined,62.1,undefined,undefined,undefined,85.3,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,52.5 ],[ undefined,undefined,undefined,undefined,undefined,65.9,72.7,undefined,undefined,79.2,undefined,undefined,72.7,undefined,undefined,undefined,undefined,39.5,undefined,undefined ],[ 167.0,undefined,undefined,undefined,undefined,undefined,83.9,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined ],[ 66.5,37,undefined,undefined,undefined,72.9,84.1,undefined,undefined,undefined,undefined,undefined,84,undefined,undefined,39.5,undefined,undefined,undefined,undefined ],[ undefined,undefined,undefined,undefined,40.4,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,30.2 ],[ undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,undefined,52.5,undefined,undefined,undefined,30.2,undefined ]];
-    let popA = [33442 ,4777 ,36494 ,15760 ,5178 ,4450 ,3995 ,12122 ,57669 ,2845 ,8645 ,31533 ,5115 ,3714 ,11685 ,7617 ,124101 ,8061 ,3201 ,21874];
-    let names = ["Trenque Lauquen","30 de agosto","9 de Julio","Carlos Casares","Carlos Tejedor","Casbas","Catrilo","Daireaux","General pico","Guamini","Henderson","Pehuajo","Pellegrini","Quemu Quemu","Rivadavia","Saliquelo","Santa Rosa","Tres lomas","Tres algarrobo","Villegas"]
-
+   
     
     loadExample();
     
@@ -77,6 +79,12 @@
         //shows the array and the matrix
         appendRowCitiesName();
         //appendRowPopulation();
+        //let title = document.createElement("td");
+        //title.setAttribute("colspan","20");
+        //title.innerHTML = "Distances between cities";
+        let row = matrixView.insertRow(matrixView.rows.length);
+        row.insertCell(0).setAttribute("colspan","20");
+        matrixView.rows.item(0).cells.item(0).innerHTML = "Distances between cities";
         for(let i = 0; i <inputCities.value; i++){
             appendRowDistances();
         }
@@ -85,11 +93,17 @@
     
 
     function appendRowCitiesName() {
+        /*
         let rowName = arrayCitiesNameView.insertRow(arrayCitiesNameView.rows.length);
         let rowPop = arrayCitiesNameView.insertRow(arrayCitiesNameView.rows.length);
-        for (let j = 0; j < inputCities.value; j++){
-            rowName.insertCell(j).appendChild(createInput("text","City #" + j));
-            rowPop.insertCell(j).appendChild(createInput("number",1));
+        */
+       let row = arrayCitiesNameView.insertRow(arrayCitiesNameView.rows.length);
+       row.insertCell(0).appendChild(createInput("text","City Name"));
+       row.insertCell(1).appendChild(createInput("text","Population"));
+        for (let i = 0; i < inputCities.value; i++){
+            let row = arrayCitiesNameView.insertRow(arrayCitiesNameView.rows.length);
+            row.insertCell(0).appendChild(createInput("text","City #" + i));
+            row.insertCell(1).appendChild(createInput("number",1));
         }
     }
 
@@ -118,12 +132,16 @@
     function loadExample(){
         for(let i = 0; i < inputCities.value; i++){
             for(let j = 0; j < inputCities.value; j++){
-                matrixView.rows.item(i).cells.item(j).children[0].value = matrixa[i][j];
+                matrixView.rows.item(i+1).cells.item(j).children[0].value = matrixa[i][j];
             }
-            arrayCitiesNameView.rows.item(1).cells.item(i).children[0].value = popA[i];
-            arrayCitiesNameView.rows.item(0).cells.item(i).children[0].value = names[i];
+            arrayCitiesNameView.rows.item(i+1).cells.item(0).children[0].value = names[i];
+            arrayCitiesNameView.rows.item(i+1).cells.item(1).children[0].value = popA[i];
             //arrayCitiesNameView.rows.item(0).cells.item(i).children[0].value = names[i];
         }
+    }
+
+    function createHeader(){
+        row = create 
     }
     
 
