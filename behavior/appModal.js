@@ -16,7 +16,7 @@
       
   };
 
-      fileInput.addEventListener("change",inputHandler);
+fileInput.addEventListener("change",inputHandler);
 
 
 function dragOverHandler(ev) {
@@ -87,8 +87,7 @@ function removeDragData(ev) {
 function loadCSV(file) {
   const reader = new FileReader();
   reader.onloadend = function () {
-    console.log(reader.result);
-    //crear la matrix
+    loadData(reader.result);  
   };
 
   //start reading the file. When it is done, calls the onload event defined above.
@@ -105,4 +104,33 @@ function loadCSV(file) {
   }
   filename.innerHTML=file.name;
 
-};
+}
+
+function loadData(csv){
+  let arrData = csv.split("\n");
+ matrixa[i][j];
+  names = arrData[0].split(",");
+  popA = arrData[1].split(",");
+  let rowsDistances = [];
+  for(let i = 2; i < arrData.length; i++){
+    rowsDistances.push(arrData[i]);
+  }
+  let row = [];
+  for(let i = 0; i < rowsDistances.length; i++){
+    row = rowsDistances[i].split(",");
+    for(let j = 0; j < row.length; j++){
+      if(row[j] != "-1.0")
+        matrixa[i][j] = row[j];
+      else
+        matrix[i][j] = undefined;
+    }
+  }
+
+  console.log("Cities Name");
+  console.table(arrNames);
+  console.log("Population");
+  console.table(arrPop);
+  console.log("Distances");
+  console.table(arrDistances);
+
+}

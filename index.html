@@ -8,12 +8,16 @@
 
 
     <!--START OUR RESOURCES-->
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="tableStyle.css">
-    <script defer src="app.js"></script>
-    <script defer src="appModal.js"></script>
-    <script defer src="appCytoscape.js"></script>
-    <link rel="stylesheet" type="text/css" href="modalStyle.css">
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="/styles/tableStyle.css">
+    <link rel="stylesheet" type="text/css" href="/styles/modalStyle.css">
+
+    <!--
+        <script defer src="/behavior/appModal.js"></script>
+    -->
+    <script defer src="/behavior/table.js"></script>
+    <script defer src="/behavior/app.js"></script>
+    <script defer src="/behavior/appCytoscape.js"></script>
     <!--END OUR RESOURCES-->
 
     <!--START CYTOSCAPE IMPORTS-->
@@ -79,23 +83,40 @@
                             data-target="#exampleModalCenter">Load from CSV</button>
                     </div>
 
+                    <!-- Input cities button -->
                     <div class="input-group w-25">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">#Cities</span>
                         </div>
-                        <input id="cities" type="number" class="form-control" min="5" max="20"
-                            placeholder="min: 5 / max: 20" value=20 aria-label="Username"
+                        <input id="input-cities" type="number" class="form-control" min="5" max="20"
+                            placeholder="min: 5 / max: 20" value=5 aria-label="Username"
                             aria-describedby="basic-addon1">
+                        <div id="arrow-buttons">
+                            <button id="add" type="button" class="btn btn-outline-primary btn-sm"><i
+                                    class="fas fa-chevron-up"></i></button>
+                            <button id="del" type="button" class="btn btn-outline-primary btn-sm"><i
+                                    class="fas fa-chevron-down"></i></button>
+
+
+                        </div>
                     </div>
+
                     <div class="float-left">
-                        <table id="citiesNames" class="table-bordered custom-margin">
+
+                        <table id="population" class="table-bordered custom-margin">
+                            <tr class="table-title">
+                                <th>City Name</th>
+                                <th>Population</th>
+                            </tr>
                         </table>
                     </div>
                     <div class="float-left">
                         <table id="distances" class="table-bordered custom-margin mg-l-20">
+                            <tr class="table-title">
+                                <th colspan="20">Matrix of distances</th>
+                            </tr>
                         </table>
                     </div>
-
                 </article>
 
             </div>
@@ -105,7 +126,7 @@
 
                 <!-- Configuration inputs -->
                 <form class="form-inline mg-t-10">
-                    
+
                     <div class="input-group mb-2 mr-sm-2">
                         <div class="input-group-prepend">
                             <div class="input-group-text">#Ants</div>
@@ -147,34 +168,34 @@
                 </div>
 
                 <div id="results" class="float-left">
-                      <div class="card d-block text-white bg-secondary mb-3 mg-r-10" style="max-width: 18rem;">
+                    <div class="card d-block text-white bg-secondary mb-3 mg-r-10" style="max-width: 18rem;">
                         <div class="card-header">Resultados</div>
                         <div class="card-body">
-                          <h5 class="card-title">Iteracion #</h5>
-                          <p class="card-text">Hormiga: 1 <br> Camino: 1-2-3-4-5-6-1 <br> Costo: 345.3 <br><br>
-                            Hormiga: 2 <br> Camino: 1-2-3-4-8-6-1 <br> Costo: 345.9<br><br>
-                            Hormiga: 3 <br> Camino: 4-5-3-7-9-1-4 <br> Costo: 345.2<br><br>
-                            Hormiga: 4 <br> Camino: 1-2-3-4-5-6-1 <br> Costo: 145.5<br><br>
-                            Hormiga: 5 <br> Camino: 1-2-3-4-5-6-1 <br> Costo: 245.3</p>
+                            <h5 class="card-title">Iteracion #</h5>
+                            <p class="card-text">Hormiga: 1 <br> Camino: 1-2-3-4-5-6-1 <br> Costo: 345.3 <br><br>
+                                Hormiga: 2 <br> Camino: 1-2-3-4-8-6-1 <br> Costo: 345.9<br><br>
+                                Hormiga: 3 <br> Camino: 4-5-3-7-9-1-4 <br> Costo: 345.2<br><br>
+                                Hormiga: 4 <br> Camino: 1-2-3-4-5-6-1 <br> Costo: 145.5<br><br>
+                                Hormiga: 5 <br> Camino: 1-2-3-4-5-6-1 <br> Costo: 245.3</p>
                         </div>
-                      </div>
-                      <div class="card d-block text-white bg-success mb-3" style="max-width: 18rem;">
+                    </div>
+                    <div class="card d-block text-white bg-success mb-3" style="max-width: 18rem;">
                         <div class="card-header">Camino de menor costo</div>
                         <div class="card-body">
-                          <h5 class="card-title">Costo: 145.5 <br> Camino: 1-2-3-4-5-6-1</h5>
-                          <p class="card-text"> Hormiga: 4 </p>
+                            <h5 class="card-title">Costo: 145.5 <br> Camino: 1-2-3-4-5-6-1</h5>
+                            <p class="card-text"> Hormiga: 4 </p>
                         </div>
-                      </div>
+                    </div>
 
 
-                      </div>
                 </div>
-
-
-
             </div>
 
+
+
         </div>
+
+    </div>
     </div>
 
     <!-- Actual modal -->

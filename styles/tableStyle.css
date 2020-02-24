@@ -5,7 +5,7 @@ td input{
     text-align:center;
 }
 
-#citiesNames td input{
+#population td input{
     border-style: hidden;
     width:115px;
     height:50px;
@@ -29,6 +29,12 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance:textfield;
+}
+
+.table-title{
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
 }
 
 /* how to remove arrow from number input */
